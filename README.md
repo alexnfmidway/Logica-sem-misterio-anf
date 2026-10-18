@@ -12,7 +12,7 @@ O material está na pasta [`livro`](./livro):
 
 Para estudar, abra `livro/index.html` em um navegador. Não é necessário instalar dependências ou iniciar um servidor.
 
-O livro está organizado em 17 capítulos, distribuídos em sete partes: fundamentos, instruções e operações, decisões, repetições, coleções, organização e aplicação em C#. Cada capítulo tem um objetivo de aprendizagem, desafio com resposta comentada e navegação para continuar a trilha. Há também exercícios interativos, exemplos em C# com opção de cópia e acompanhamento do progresso.
+O livro está organizado em 17 capítulos, distribuídos em sete partes: fundamentos, instruções e operações, decisões, repetições, coleções, organização e aplicação em C#. Depois do exemplo resolvido, cada capítulo apresenta uma ilustração própria relacionada ao conteúdo; algumas lições também usam fotos para aproximar as ideias do cotidiano. Os diagramas de conceito podem animar o percurso passo a passo, respeitando a preferência por movimento reduzido. O desafio é interativo: no primeiro capítulo, a pessoa escreve a própria resposta; nos demais, escolhe uma alternativa. Todos os desafios oferecem correção explicada e outra ilustração. Há também exercícios interativos, exemplos em C# com opção de cópia e acompanhamento do progresso.
 
 O progresso e o último capítulo visitado ficam salvos no armazenamento local do navegador. Eles não são sincronizados entre dispositivos e podem ser removidos ao limpar os dados do navegador.
 
