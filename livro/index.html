@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="description" content="Um guia visual e prático de lógica de programação, com exemplos do dia a dia, diagramas e exercícios interativos.">
+  <title>Lógica sem mistério | Aprenda passo a passo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Lógica sem mistério, início">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span>Lógica <b>sem mistério</b></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Conteúdo <span aria-hidden="true">☰</span></button>
+    <nav id="menu-principal" class="top-nav" aria-label="Navegação principal">
+      <a href="#trilha">Trilha de estudos</a>
+      <a href="#praticar">Praticar</a>
+      <a href="#sobre">Sobre o material</a>
+      <span class="progress-chip"><span id="progress-count">0</span>/7 concluídos</span>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> SEU PRIMEIRO PASSO NA PROGRAMAÇÃO</p>
+        <h1>Aprenda a pensar<br>como <span>programador.</span></h1>
+        <p class="hero-lead">Lógica de programação explicada com situações do dia a dia, desenhos, exemplos em C# e atividades para testar suas ideias.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#trilha">Começar a aprender <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#praticar">Ir direto para prática</a>
+        </div>
+        <div class="hero-note"><span aria-hidden="true">✦</span> Não precisa saber programar para começar.</div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração: uma ideia vira passos, que viram um resultado">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="idea-card">
+          <span class="idea-icon" aria-hidden="true">💡</span>
+          <span class="idea-label">UMA IDEIA</span>
+          <strong>Preparar um café</strong>
+        </div>
+        <div class="flow-line flow-a" aria-hidden="true"></div>
+        <div class="flow-line flow-b" aria-hidden="true"></div>
+        <div class="step-card step-a"><span>01</span> Aquecer a água</div>
+        <div class="step-card step-b"><span>02</span> Colocar o pó</div>
+        <div class="step-card step-c"><span>03</span> Servir na xícara</div>
+        <div class="result-card"><span aria-hidden="true">☕</span><span>CAFÉ PRONTO!</span></div>
+        <span class="spark spark-a" aria-hidden="true">✳</span>
+        <span class="spark spark-b" aria-hidden="true">✦</span>
+      </div>
+    </section>
+
+    <section class="quick-facts" aria-label="Como funciona este guia">
+      <div><span class="fact-icon fact-purple" aria-hidden="true">◉</span><p><strong>7 assuntos</strong><br><span>em uma ordem que faz sentido</span></p></div>
+      <div><span class="fact-icon fact-yellow" aria-hidden="true">▤</span><p><strong>Exemplos visuais</strong><br><span>para entender antes do código</span></p></div>
+      <div><span class="fact-icon fact-green" aria-hidden="true">⌘</span><p><strong>Prática guiada</strong><br><span>com desafios para experimentar</span></p></div>
+    </section>
+
+    <section class="learning-layout" id="trilha">
+      <aside class="sidebar">
+        <p class="sidebar-title">SUA TRILHA</p>
+        <a class="side-link active" href="#fundamentos"><span class="side-number">01</span> Fundamentos</a>
+        <a class="side-link" href="#sequencia"><span class="side-number">02</span> Sequência e operadores</a>
+        <a class="side-link" href="#decisoes"><span class="side-number">03</span> Decisões</a>
+        <a class="side-link" href="#repeticao"><span class="side-number">04</span> Repetição</a>
+        <a class="side-link" href="#colecoes"><span class="side-number">05</span> Vetores e matrizes</a>
+        <a class="side-link" href="#modulos"><span class="side-number">06</span> Funções e módulos</a>
+        <a class="side-link" href="#registros"><span class="side-number">07</span> Registros</a>
+        <div class="sidebar-tip">
+          <span aria-hidden="true">🌱</span>
+          <p><strong>Uma dica:</strong> vá no seu ritmo. Marque cada assunto quando sentir que entendeu.</p>
+        </div>
+      </aside>
+
+      <div class="lessons">
+        <section class="lesson-section" id="fundamentos" data-lesson="1">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 01</span>
+            <h2>Primeiro, vamos organizar as ideias</h2>
+            <p>Programar é dar instruções claras para resolver um problema. Antes do computador, existe o raciocínio.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="two-columns">
+              <div>
+                <h3>Algoritmo é uma receita</h3>
+                <p>Uma receita organiza ingredientes e passos para chegar a um resultado. Um algoritmo faz o mesmo: recebe informações, segue instruções e produz uma resposta.</p>
+                <div class="everyday-example"><span aria-hidden="true">🥪</span><div><b>Exemplo do dia a dia</b><p>Para montar um sanduíche: pegar o pão → passar o recheio → fechar → servir. Se a ordem muda, o resultado também pode mudar.</p></div></div>
+              </div>
+              <div class="diagram-card">
+                <p class="diagram-caption">O caminho de uma solução</p>
+                <div class="mini-flow">
+                  <div class="flow-box input-box"><small>ENTRADA</small><b>Ingredientes</b><span>pão + queijo</span></div>
+                  <span class="flow-arrow" aria-hidden="true">↓</span>
+                  <div class="flow-box process-box"><small>PROCESSAMENTO</small><b>Seguir os passos</b><span>montar o sanduíche</span></div>
+                  <span class="flow-arrow" aria-hidden="true">↓</span>
+                  <div class="flow-box output-box"><small>SAÍDA</small><b>Resultado</b><span>lanche pronto</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="concept-grid">
+              <article><span class="concept-icon purple">▣</span><h4>Variável</h4><p>Uma caixinha com nome, onde guardamos um valor que pode mudar. Ex.: <code>temperatura</code>.</p></article>
+              <article><span class="concept-icon orange">#</span><h4>Constante</h4><p>Um valor que escolhemos manter fixo durante o cálculo. Ex.: os minutos de uma hora, <code>60</code>.</p></article>
+              <article><span class="concept-icon green">Aa</span><h4>Tipo de dado</h4><p>Indica que tipo de valor cabe na caixinha: número, texto, verdadeiro ou falso.</p></article>
+            </div>
+            <div class="memory-visual" role="img" aria-label="Representação de variáveis na memória: nome idade guarda o número 16, nome guarda o texto Ana">
+              <div class="memory-title"><span class="memory-led"></span> IMAGINE A MEMÓRIA COMO UMA ESTANTE</div>
+              <div class="memory-shelf">
+                <div class="memory-cell"><small>nome</small><strong>"Ana"</strong><span>texto</span></div>
+                <div class="memory-cell"><small>idade</small><strong>16</strong><span>inteiro</span></div>
+                <div class="memory-cell"><small>temIngresso</small><strong>true</strong><span>lógico</span></div>
+              </div>
+            </div>
+            <div class="code-example">
+              <div class="code-heading"><span>Exemplo em C#</span><span class="code-language">C#</span></div>
+              <pre><code>string nome = "Ana";
+int idade = 16;
+bool temIngresso = true;</code></pre>
+              <p><code>string</code> guarda texto, <code>int</code> guarda número inteiro e <code>bool</code> guarda <code>true</code> ou <code>false</code>.</p>
+            </div>
+            <button class="complete-button" type="button" data-complete="1"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="sequencia" data-lesson="2">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 02</span>
+            <h2>Passo a passo: sequência e operadores</h2>
+            <p>Na estrutura sequencial, cada instrução acontece em ordem. Operadores ajudam a fazer contas e comparações.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="two-columns">
+              <div>
+                <h3>Uma compra no mercado</h3>
+                <p>Você pega dois produtos e calcula o total. Primeiro lê os preços, depois soma e, por fim, mostra o resultado.</p>
+                <ol class="numbered-steps"><li><span>1</span> Ler os preços</li><li><span>2</span> Somar os valores</li><li><span>3</span> Exibir o total</li></ol>
+              </div>
+              <div class="receipt">
+                <div class="receipt-top">MERCADINHO DA ESQUINA</div>
+                <div class="receipt-line"><span>🍎 Maçãs</span><b>R$ 5,00</b></div>
+                <div class="receipt-line"><span>🥛 Leite</span><b>R$ 6,50</b></div>
+                <div class="receipt-divider"></div>
+                <div class="receipt-total"><span>TOTAL</span><b>R$ 11,50</b></div>
+                <div class="receipt-equation">5,00 <span>+</span> 6,50 <span>=</span> 11,50</div>
+              </div>
+            </div>
+            <div class="operator-grid">
+              <div><b>Aritméticos</b><p><code>+</code> somar · <code>-</code> subtrair · <code>*</code> multiplicar · <code>/</code> dividir · <code>%</code> resto</p></div>
+              <div><b>Comparação</b><p><code>==</code> igual · <code>!=</code> diferente · <code>&gt;</code> maior · <code>&lt;</code> menor · <code>&gt;=</code> maior ou igual</p></div>
+              <div><b>Lógicos</b><p><code>&amp;&amp;</code> E · <code>||</code> OU · <code>!</code> NÃO</p></div>
+            </div>
+            <div class="code-example">
+              <div class="code-heading"><span>Traduzindo a sequência</span><span class="code-language">C#</span></div>
+              <pre><code>double macas = 5.00;
+double leite = 6.50;
+double total = macas + leite;
+Console.WriteLine($"Total: R$ {total:F2}");</code></pre>
+              <p>No código, <code>=</code> significa “guarde este valor”. Já <code>==</code> pergunta “estes valores são iguais?”.</p>
+            </div>
+            <button class="complete-button" type="button" data-complete="2"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="decisoes" data-lesson="3">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 03</span>
+            <h2>Tomando decisões com o programa</h2>
+            <p>Uma condição permite escolher o que fazer. É como verificar uma regra antes de agir.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="decision-visual" aria-label="Fluxograma de decisão: se está chovendo, levar guarda-chuva; se não, sair sem guarda-chuva">
+              <div class="decision-start">Você vai sair</div><span class="decision-down" aria-hidden="true">↓</span>
+              <div class="diamond-wrap"><div class="diamond"><span>Está<br>chovendo?</span></div></div>
+              <div class="decision-branches"><div class="branch yes"><span>SIM</span><b>Levar guarda-chuva ☂️</b></div><div class="branch no"><span>NÃO</span><b>Sair sem guarda-chuva ☀️</b></div></div>
+            </div>
+            <div class="two-columns decision-explain">
+              <div><h3>Se isso, faça aquilo</h3><p>A condição é uma pergunta que pode ser respondida com verdadeiro ou falso. O programa escolhe o caminho correspondente.</p></div>
+              <div class="code-example compact">
+                <div class="code-heading"><span>Decisão em C#</span><span class="code-language">C#</span></div>
+                <pre><code>if (estaChovendo)
+{
+    Console.WriteLine("Levar guarda-chuva");
+}
+else
+{
+    Console.WriteLine("Pode sair!");
+}</code></pre>
+              </div>
+            </div>
+            <div class="interactive-box">
+              <div><span class="interactive-label">EXPERIMENTE</span><h3>O ingresso tem desconto?</h3><p>Considere que pessoas com até 12 anos pagam meia-entrada.</p></div>
+              <label for="idade-ingresso">Digite a idade <input id="idade-ingresso" type="number" min="0" max="120" value="10"></label>
+              <button class="button button-small" id="verificar-idade" type="button">Verificar</button>
+              <output id="resultado-idade" class="interactive-result" aria-live="polite">A pessoa paga meia-entrada 🎟️</output>
+            </div>
+            <div class="tip-box"><b>Mais de duas opções?</b> Use <code>else if</code> (senão, se) para testar outra condição; use <code>switch</code> quando há várias alternativas de um mesmo valor, como os dias da semana.</div>
+            <button class="complete-button" type="button" data-complete="3"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="repeticao" data-lesson="4">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 04</span>
+            <h2>Repetir sem fazer tudo de novo</h2>
+            <p>Laços de repetição executam um conjunto de passos várias vezes — até a tarefa terminar ou uma condição mudar.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="two-columns">
+              <div>
+                <h3>Regar várias plantas</h3>
+                <p>Em vez de escrever “regar a planta” dez vezes, podemos repetir a instrução enquanto houver plantas sem água.</p>
+                <div class="plant-row" aria-label="Cinco plantas que serão regadas"><span>🪴</span><span>🌱</span><span>🌿</span><span>🪴</span><span>🌱</span></div>
+                <div class="loop-route"><span>regar uma</span><span aria-hidden="true">↶</span><span>próxima planta</span><span aria-hidden="true">↶</span><span>até acabar</span></div>
+              </div>
+              <div class="code-example">
+                <div class="code-heading"><span>Repetição com limite</span><span class="code-language">C#</span></div>
+                <pre><code>for (int planta = 1; planta &lt;= 5; planta++)
+{
+    Console.WriteLine($"Reguei a planta {planta}");
+}</code></pre>
+                <p>O <code>for</code> é útil quando sabemos quantas vezes repetir. O <code>while</code> repete enquanto uma condição for verdadeira.</p>
+              </div>
+            </div>
+            <div class="loop-warning"><span aria-hidden="true">⚠</span><p><b>Evite o laço infinito:</b> confira se alguma coisa muda para que a condição deixe de ser verdadeira. Sem isso, o programa pode repetir para sempre.</p></div>
+            <div class="interactive-box loop-demo">
+              <div><span class="interactive-label">ANIMAÇÃO DE IDEIA</span><h3>Conte as voltas</h3><p>Veja o laço avançar uma volta de cada vez.</p></div>
+              <label for="numero-voltas">Quantas voltas? <input id="numero-voltas" type="number" min="1" max="12" value="5"></label>
+              <button class="button button-small" id="iniciar-contagem" type="button">Iniciar laço</button>
+              <output id="resultado-voltas" class="interactive-result" aria-live="polite">Pronto para começar.</output>
+            </div>
+            <button class="complete-button" type="button" data-complete="4"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="colecoes" data-lesson="5">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 05</span>
+            <h2>Listas organizadas: vetores e matrizes</h2>
+            <p>Quando temos muitos valores relacionados, guardá-los juntos deixa o programa mais organizado.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="two-columns">
+              <div>
+                <h3>Vetor é uma fileira de gavetas</h3>
+                <p>Um vetor guarda vários valores do mesmo tipo. Cada posição tem um índice. Em C#, a primeira posição é a <b>0</b>.</p>
+                <div class="array-visual">
+                  <div class="array-label">notas</div>
+                  <div class="array-cells"><div><small>índice 0</small><b>8</b></div><div><small>índice 1</small><b>7</b></div><div><small>índice 2</small><b>9</b></div><div><small>índice 3</small><b>6</b></div></div>
+                </div>
+              </div>
+              <div>
+                <h3>Matriz é uma tabela</h3>
+                <p>Uma matriz organiza valores em linhas e colunas. Pense nos assentos de uma sala ou em uma tabela de horários.</p>
+                <div class="matrix-visual" role="img" aria-label="Tabela de assentos com duas fileiras e três lugares">
+                  <span></span><span>Col. 0</span><span>Col. 1</span><span>Col. 2</span>
+                  <b>Fila 0</b><i>🪑</i><i>🪑</i><i>🪑</i>
+                  <b>Fila 1</b><i>🪑</i><i>🪑</i><i>🪑</i>
+                </div>
+              </div>
+            </div>
+            <div class="code-example">
+              <div class="code-heading"><span>Guardar e acessar notas</span><span class="code-language">C#</span></div>
+              <pre><code>int[] notas = { 8, 7, 9, 6 };
+Console.WriteLine(notas[0]); // mostra 8
+
+int[,] assentos = { { 1, 2, 3 }, { 4, 5, 6 } };
+Console.WriteLine(assentos[1, 2]); // linha 1, coluna 2</code></pre>
+              <p>Atenção: acessar uma posição fora do tamanho da lista causa erro. Neste exemplo, os índices das notas vão de 0 a 3.</p>
+            </div>
+            <div class="interactive-box">
+              <div><span class="interactive-label">SUA VEZ</span><h3>Qual é a média da turma?</h3><p>Informe três notas de 0 a 10. O programa vai guardá-las como uma coleção e calcular a média.</p></div>
+              <div class="grade-inputs"><label>Nota 1 <input class="nota-turma" type="number" min="0" max="10" step="0.1" value="8"></label><label>Nota 2 <input class="nota-turma" type="number" min="0" max="10" step="0.1" value="7"></label><label>Nota 3 <input class="nota-turma" type="number" min="0" max="10" step="0.1" value="9"></label></div>
+              <button class="button button-small" id="calcular-media" type="button">Calcular média</button>
+              <output id="resultado-media" class="interactive-result" aria-live="polite">A média é 8,00.</output>
+            </div>
+            <button class="complete-button" type="button" data-complete="5"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="modulos" data-lesson="6">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 06</span>
+            <h2>Funções: dividir para conquistar</h2>
+            <p>Um programa grande fica mais fácil de entender quando separamos tarefas em partes menores e damos um nome a cada uma.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="module-visual">
+              <div class="big-task"><span aria-hidden="true">🎂</span><b>Organizar uma festa</b></div>
+              <div class="module-connector" aria-hidden="true"></div>
+              <div class="small-tasks"><div><span>🎈</span>Decorar</div><div><span>🍰</span>Preparar comida</div><div><span>✉️</span>Convidar</div></div>
+            </div>
+            <div class="two-columns">
+              <div><h3>Uma função tem uma responsabilidade</h3><p>Assim como cada pessoa pode cuidar de uma parte da festa, cada função resolve uma tarefa específica. Ela pode receber dados e devolver um resultado.</p></div>
+              <div class="tip-box"><b>Por que isso ajuda?</b><br>O código fica mais legível, partes podem ser reutilizadas e fica mais simples encontrar onde corrigir um problema.</div>
+            </div>
+            <div class="code-example">
+              <div class="code-heading"><span>Uma função que calcula</span><span class="code-language">C#</span></div>
+              <pre><code>static double CalcularMedia(double nota1, double nota2)
+{
+    return (nota1 + nota2) / 2;
+}
+
+double media = CalcularMedia(8, 10);
+Console.WriteLine(media); // 9</code></pre>
+              <p><code>CalcularMedia</code> recebe duas notas (parâmetros), faz o cálculo e devolve a média com <code>return</code>.</p>
+            </div>
+            <button class="complete-button" type="button" data-complete="6"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="lesson-section" id="registros" data-lesson="7">
+          <div class="section-heading">
+            <span class="chapter-tag">CAPÍTULO 07</span>
+            <h2>Registros: dados que andam juntos</h2>
+            <p>Às vezes, uma coisa tem características de tipos diferentes. Um registro agrupa essas informações em uma estrutura com significado.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="two-columns">
+              <div>
+                <h3>Uma ficha de estudante</h3>
+                <p>Nome é texto, idade é número e matrícula também pode ser texto. Um registro junta os campos que descrevem a mesma pessoa.</p>
+                <div class="student-card"><div class="avatar">👩🏽‍🎓</div><div><small>ESTUDANTE</small><b>Marina Costa</b><span>Idade: 17 anos</span><span>Turma: 2º ano</span></div><span class="student-check">✓</span></div>
+              </div>
+              <div class="code-example">
+                <div class="code-heading"><span>Representando a ficha</span><span class="code-language">C#</span></div>
+                <pre><code>class Estudante
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+    public string Turma { get; set; }
+}
+
+var estudante = new Estudante
+{
+    Nome = "Marina Costa",
+    Idade = 17,
+    Turma = "2º ano"
+};</code></pre>
+              </div>
+            </div>
+            <div class="tip-box"><b>Resumo:</b> vetor é uma coleção de valores parecidos; registro é um conjunto de campos que descreve uma entidade; uma matriz organiza coleções em linhas e colunas.</div>
+            <button class="complete-button" type="button" data-complete="7"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+          </div>
+        </section>
+
+        <section class="practice-section" id="praticar">
+          <div class="practice-heading"><span class="practice-star" aria-hidden="true">✦</span><div><p class="eyebrow">HORA DE TESTAR</p><h2>Desafio relâmpago</h2><p>Leia a situação e escolha a melhor resposta. Errar faz parte de aprender!</p></div></div>
+          <div class="quiz-card" data-quiz="1">
+            <p class="quiz-question"><span>01</span> Você quer mostrar “Bom dia!” três vezes na tela. Qual estrutura ajuda a repetir a instrução?</p>
+            <div class="quiz-options">
+              <button type="button" data-correct="false">Uma variável</button>
+              <button type="button" data-correct="true">Um laço de repetição</button>
+              <button type="button" data-correct="false">Um registro</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </div>
+          <div class="quiz-card" data-quiz="2">
+            <p class="quiz-question"><span>02</span> O aplicativo deve avisar “pode entrar” somente se a pessoa tem ingresso. O que usamos?</p>
+            <div class="quiz-options">
+              <button type="button" data-correct="true">Uma condição</button>
+              <button type="button" data-correct="false">Uma matriz</button>
+              <button type="button" data-correct="false">Uma constante</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </div>
+          <div class="quiz-card" data-quiz="3">
+            <p class="quiz-question"><span>03</span> Para guardar as temperaturas de cada dia da semana, qual estrutura combina melhor?</p>
+            <div class="quiz-options">
+              <button type="button" data-correct="false">Uma condição <code>if</code></button>
+              <button type="button" data-correct="true">Um vetor</button>
+              <button type="button" data-correct="false">Uma função sem retorno</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section class="next-step">
+          <div><span>VOCÊ CHEGOU ATÉ AQUI! 🎉</span><h2>O segredo é praticar um pouquinho por vez.</h2><p>Escolha uma tarefa da sua rotina e tente descrevê-la em passos. Esse já é o começo de um algoritmo.</p></div>
+          <a class="button button-light" href="#inicio">Voltar ao início ↑</a>
+        </section>
+      </div>
+    </section>
+
+    <section class="about-section" id="sobre">
+      <div>
+        <p class="eyebrow">SOBRE ESTE GUIA</p>
+        <h2>Inspirado em uma trilha clássica de lógica.</h2>
+        <p>Este material foi criado como apoio didático original, usando exemplos cotidianos e ilustrações próprias. A sequência acompanha temas introdutórios de lógica de programação, como algoritmos, variáveis, estruturas de controle, vetores, matrizes e registros.</p>
+      </div>
+      <div class="book-reference">
+        <span class="book-icon" aria-hidden="true">📘</span>
+        <div><b>Leitura de referência</b><p><i>Lógica de programação</i>, de Gley Fabiano Cardoso Xavier, Editora Senac São Paulo.</p><a href="https://www.editorasenacsp.com.br/" target="_blank" rel="noreferrer">Editora Senac São Paulo ↗</a><a href="https://books.google.com/books/about/L%C3%B3gica_de_programa%C3%A7%C3%A3o.html?id=-R1nDwAAQBAJ" target="_blank" rel="noreferrer">Consultar no Google Books ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>Lógica <b>sem mistério</b></span></a><p>Feito para aprender, testar e descobrir. <span>© <span id="ano-atual"></span></span></p></footer>
+</body>
+</html>
