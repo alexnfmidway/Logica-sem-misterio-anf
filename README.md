@@ -1,6 +1,6 @@
 # Lógica sem mistério
 
-Um guia visual e interativo para aprender lógica de programação com exemplos do dia a dia.
+Um livro digital visual e interativo para aprender lógica de programação do zero e praticar os conceitos em C#.
 
 ## Site de estudos
 
@@ -12,7 +12,9 @@ O material está na pasta [`livro`](./livro):
 
 Para estudar, abra `livro/index.html` em um navegador. Não é necessário instalar dependências ou iniciar um servidor.
 
-As aulas incluem algoritmos, variáveis e tipos, sequência e operadores, decisões, repetição, vetores e matrizes, funções e registros, com exemplos em C#.
+O livro está organizado em 17 capítulos, distribuídos em sete partes: fundamentos, instruções e operações, decisões, repetições, coleções, organização e aplicação em C#. Cada capítulo tem um objetivo de aprendizagem, desafio com resposta comentada e navegação para continuar a trilha. Há também exercícios interativos, exemplos em C# com opção de cópia e acompanhamento do progresso.
+
+O progresso e o último capítulo visitado ficam salvos no armazenamento local do navegador. Eles não são sincronizados entre dispositivos e podem ser removidos ao limpar os dados do navegador.
 
 ## Projeto de exercícios em C#
 
