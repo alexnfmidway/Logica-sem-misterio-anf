@@ -22,7 +22,7 @@ const workedExamples = [
   { title: "Calcular uma expressão", context: "Vamos resolver 2 + 3 × 4 sem trocar a ordem das operações.", steps: ["A multiplicação vem antes da soma.", "Calcular 3 × 4 = 12.", "Somar 2 + 12.", "Resultado: 14. Com (2 + 3) × 4, o resultado seria 20."], code: "int resultado = 2 + 3 * 4;\nConsole.WriteLine(resultado); // 14", flow: ["2 + 3 × 4", "2 + 12", "14"] },
   { title: "Decidir se paga meia-entrada", context: "A regra dá meia-entrada para quem tem até 12 anos. A pessoa tem 12.", steps: ["Receber a idade: 12.", "Perguntar: 12 é menor ou igual a 12?", "A resposta é verdadeira.", "Escolher o caminho: pagar meia-entrada."], code: "int idade = 12;\nif (idade <= 12)\n    Console.WriteLine(\"Meia-entrada\");\nelse\n    Console.WriteLine(\"Inteira\");", flow: ["Idade: 12", "12 <= 12? Sim", "Meia-entrada"] },
   { title: "Validar e classificar uma nota", context: "A nota é 8,5. Ela precisa estar entre 0 e 10 e a aprovação começa em 7.", steps: ["Verificar se 8,5 é menor que 0 ou maior que 10: não.", "Como a nota é válida, verificar se 8,5 é pelo menos 7: sim.", "Exibir “Aprovado”."], code: "double nota = 8.5;\nif (nota < 0 || nota > 10)\n    Console.WriteLine(\"Nota inválida\");\nelse if (nota >= 7)\n    Console.WriteLine(\"Aprovado\");\nelse\n    Console.WriteLine(\"Precisa recuperar\");", flow: ["Nota: 8,5", "Está entre 0 e 10?", "Válida; resultado: aprovado"] },
-  { title: "Acompanhar um saldo com while", context: "O saldo começa em 30. Retiramos 10 enquanto ainda houver saldo positivo.", steps: ["Verificar 30 > 0; retirar 10: saldo 20.", "Verificar 20 > 0; retirar 10: saldo 10.", "Verificar 10 > 0; retirar 10: saldo 0.", "Verificar 0 > 0: falso; encerrar."], code: "int saldo = 30;\nwhile (saldo > 0)\n{\n    saldo -= 10;\n    Console.WriteLine(saldo);\n}", flow: ["30", "20 → 10 → 0", "Condição falsa; fim"] },
+  { title: "Encher um copo d'água com while", context: "O copo comporta 300 ml e começa vazio. A cada volta despejamos 100 ml, e só paramos quando ele estiver cheio.", steps: ["Começar com ml = 0.", "Perguntar: 0 < 300? Sim. Despejar 100 ml: ml = 100.", "Perguntar: 100 < 300? Sim. Despejar 100 ml: ml = 200.", "Perguntar: 200 < 300? Sim. Despejar 100 ml: ml = 300.", "Perguntar: 300 < 300? Não. O laço termina e o programa mostra “Copo cheio!”."], code: "int ml = 0;\nwhile (ml < 300)\n{\n    ml += 100;\n    Console.WriteLine($\"Copo com {ml} ml\");\n}\nConsole.WriteLine(\"Copo cheio!\");", flow: ["Copo vazio: ml = 0", "Pergunta → despeja 100 ml (3 vezes)", "ml = 300: cheio, fim"] },
   { title: "Somar de 1 até 4 com for", context: "Um contador visita os números; um acumulador guarda a soma parcial.", steps: ["Começar com soma = 0.", "Somar 1: soma = 1.", "Somar 2 e depois 3: soma = 6.", "Somar 4: soma = 10; o laço termina."], code: "int soma = 0;\nfor (int numero = 1; numero <= 4; numero++)\n{\n    soma += numero;\n}\nConsole.WriteLine(soma); // 10", flow: ["Contador: 1, 2, 3, 4", "Soma parcial: 1 → 3 → 6 → 10", "Total: 10"] },
   { title: "Percorrer e pesquisar um vetor", context: "No vetor { 8, 7, 9 }, queremos somar os valores e localizar o 9.", steps: ["Índices: 8 está em 0, 7 em 1 e 9 em 2.", "Percorrer o vetor e somar: 8 + 7 + 9 = 24.", "Comparar cada valor com 9.", "Encontrar 9 no índice 2."], code: "int[] notas = { 8, 7, 9 };\nint soma = 0;\nint indiceEncontrado = -1;\nfor (int indice = 0; indice < notas.Length; indice++)\n{\n    soma += notas[indice];\n    if (notas[indice] == 9)\n        indiceEncontrado = indice;\n}\nConsole.WriteLine($\"Soma: {soma}; índice do 9: {indiceEncontrado}\");", flow: ["[8] [7] [9]", "Índices 0 → 1 → 2", "Soma 24; 9 no índice 2"] },
   { title: "Encontrar um valor na matriz", context: "Na matriz {{ 1, 2, 3 }, { 4, 5, 6 }}, vamos ler lugares[0, 2].", steps: ["O primeiro índice indica a linha: linha 0.", "O segundo índice indica a coluna: coluna 2.", "Na linha 0, os valores são 1, 2, 3.", "Na coluna 2 está o valor 3."], code: "int[,] lugares = { { 1, 2, 3 }, { 4, 5, 6 } };\nint valor = lugares[0, 2];\nConsole.WriteLine(valor); // 3", flow: ["Linha 0", "Coluna 2", "Valor: 3"] },
@@ -41,7 +41,7 @@ const chapterIllustrations = [
   ["🧮", "✖️", "✅"],
   ["🎂", "❓", "🎟️"],
   ["📝", "✅", "🎓"],
-  ["💰", "🔁", "🛑"],
+  ["🥛", "🔁", "🛑"],
   ["🔢", "➕", "🔟"],
   ["🧺", "🔍", "🎯"],
   ["📋", "↕️", "📍"],
@@ -76,7 +76,7 @@ const chapterArtwork = [
   { title: "A precedência organiza as operações da expressão", hero: "🧮", cards: [["2 + 3 × 4", "EXPRESSÃO"], ["3 × 4", "PRIMEIRO"], ["14", "RESULTADO"]] },
   { title: "A previsão do tempo leva a duas decisões diferentes", hero: "🌦️", cards: [["❓", "Está chovendo?"], ["☂️", "SIM · levar"], ["☀️", "NÃO · sair"]] },
   { title: "Conferir uma nota antes de classificar", hero: "📋", cards: [["8,5", "NOTA"], ["0–10", "FAIXA VÁLIDA"], ["🎓", "APROVADO"]] },
-  { title: "O saldo muda a cada volta do laço", hero: "💰", cards: [["30", "INÍCIO"], ["− 10", "REPETIR"], ["0", "ENCERRAR"]] },
+  { title: "Encher o copo enquanto ainda couber água", hero: "🥛", cards: [["❓", "O copo está cheio?"], ["💧", "NÃO · despejar 100 ml"], ["✅", "SIM · parar"]] },
   { title: "Regar as plantas uma de cada vez", hero: "🪴", cards: [["1", "PRIMEIRA"], ["2", "PRÓXIMA"], ["5", "TERMINOU"]] },
   { title: "Procurar uma nota percorrendo o vetor", hero: "🗂️", cards: [["0 · 8", "ÍNDICE 0"], ["2 · 9", "ENCONTRADO"], ["30", "SOMA"]] },
   { title: "Encontrar um assento usando linha e coluna", hero: "🪑", cards: [["↕️", "LINHA 0"], ["↔️", "COLUNA 2"], ["3", "VALOR"]] },
@@ -112,10 +112,10 @@ const chapterVisuals = {
     paths: [["NÃO", "Mostrar erro"], ["SIM · nota ≥ 7", "Aprovado"], ["SIM · nota < 7", "Recuperação"]]
   },
   9: {
-    title: "Animação do while: cada volta atualiza o saldo",
+    title: "Animação do while: o copo enche a cada volta",
     type: "loop",
-    question: "saldo > 0?",
-    items: [["30", "retira 10"], ["20", "retira 10"], ["10", "retira 10"], ["0", "para"]]
+    question: "ml < 300?",
+    items: [["0 ml", "despeja 100"], ["100 ml", "despeja 100"], ["200 ml", "despeja 100"], ["300 ml", "cheio: para"]]
   },
   10: {
     title: "Animação do for: contador e acumulador avançam juntos",
@@ -172,7 +172,7 @@ const chapterChallenges = [
   { prompt: "Qual expressão vale 40?", options: ["18 / 3 + 2 * 5", "(18 / 3 + 2) * 5", "18 / (3 + 2) * 5"], correct: 1, answer: "(18 / 3 + 2) * 5 = (6 + 2) × 5 = 40.", explanation: "Os parênteses fazem o 6 e o 2 serem somados primeiro; depois o resultado 8 é multiplicado por 5.", flow: ["(18 / 3 + 2) × 5", "(6 + 2) × 5", "40"] },
   { prompt: "Uma pessoa tem 12 anos. A regra é meia-entrada para idade menor ou igual a 12. Qual caminho ela segue?", options: ["Inteira, porque 12 não é menor que 12", "Meia-entrada, porque 12 <= 12 é verdadeiro", "Inválido, porque 12 não pode ser comparado"], correct: 1, answer: "A condição idade <= 12 é verdadeira para 12; a pessoa paga meia-entrada.", explanation: "O operador <= inclui o próprio limite 12. Por isso, a condição é verdadeira.", flow: ["Idade: 12", "12 <= 12: verdadeiro", "Meia-entrada"] },
   { prompt: "Uma nota vale de 0 a 10. Qual condição identifica uma nota inválida?", options: ["nota < 0 || nota > 10", "nota >= 0 && nota <= 10", "nota == 7"], correct: 0, answer: "A nota é inválida quando nota < 0 || nota > 10. Para exigir senha correta e conta ativa, usamos senhaCorreta && contaAtiva.", explanation: "|| significa OU: basta estar abaixo de 0 ou acima de 10 para ser inválida. && exige que as duas condições sejam verdadeiras.", flow: ["nota < 0?", "OU nota > 10?", "Se sim: inválida"] },
-  { prompt: "O saldo é 25. Retire 10 enquanto houver pelo menos 10. Quais saldos aparecem?", options: ["15 e 5; depois o laço para", "15, 5 e -5; continua até negativo", "25 e 15; o saldo nunca muda"], correct: 0, answer: "A sequência é 25 → 15 → 5. Como 5 >= 10 é falso, o laço termina.", explanation: "O while verifica a condição antes de cada volta. A condição deixa de ser verdadeira quando o saldo chega a 5.", flow: ["25 − 10 = 15", "15 − 10 = 5", "5 < 10: parar"] },
+  { prompt: "Um copo comporta 250 ml e começa vazio. O laço é while (ml < 250) e despeja 100 ml por volta. Quais valores de ml aparecem na tela?", options: ["100 e 200; depois o laço para", "100, 200 e 300; depois o laço para", "100, 200, 300 e 400; continua até transbordar"], correct: 1, answer: "Aparecem 100, 200 e 300. Com ml = 200, a pergunta 200 < 250 ainda é verdadeira, então há mais uma volta e ml chega a 300.", explanation: "A condição só é verificada no começo de cada volta. Depois de uma volta começada, ela termina inteira, mesmo que o copo passe de 250 ml. Só então 300 < 250 é falso e o laço para.", flow: ["0 → 100 (0 < 250)", "100 → 200 → 300 (200 < 250)", "300 < 250? Não: parar"] },
   { prompt: "Qual total resulta ao somar os números de 1 a 4 com contador e acumulador?", options: ["4", "10", "1234"], correct: 1, answer: "As somas parciais são 1, 3, 6 e 10. O resultado final é 10.", explanation: "O contador visita cada número; o acumulador soma o valor de cada volta, em vez de juntar os algarismos.", flow: ["1", "1 + 2 + 3", "1 + 2 + 3 + 4 = 10"] },
   { prompt: "No vetor { 8, 7, 9, 6 }, em qual índice está 9 e qual é a soma?", options: ["Índice 3; soma 30", "Índice 2; soma 30", "Índice 2; soma 26"], correct: 1, answer: "O 9 está no índice 2; a soma é 8 + 7 + 9 + 6 = 30.", explanation: "Os índices começam em zero: 8 está no 0, 7 no 1, 9 no 2 e 6 no 3. Somando os quatro valores obtemos 30.", flow: ["Índice 0: 8; 1: 7", "Índice 2: 9; 3: 6", "Soma: 30"] },
   { prompt: "Na matriz {{ 1, 2, 3 }, { 4, 5, 6 }}, qual valor está em lugares[1, 2]?", options: ["3", "5", "6"], correct: 2, answer: "A linha 1 é a segunda linha (4, 5, 6); a coluna 2 é o terceiro valor. Portanto, o resultado é 6.", explanation: "A primeira coordenada indica a linha e a segunda a coluna; ambas começam em zero.", flow: ["Linha 1: 4, 5, 6", "Coluna 2", "Valor: 6"] },
@@ -191,7 +191,7 @@ const chapterObjectives = [
   "Prever o resultado de expressões usando precedência e parênteses.",
   "Representar uma escolha binária usando uma condição.",
   "Combinar condições e validar valores antes de utilizá-los.",
-  "Distinguir laços que testam a condição antes ou depois de executar.",
+  "Explicar, com um exemplo do dia a dia, como um laço repete instruções enquanto uma condição for verdadeira, e diferenciar while de do...while.",
   "Usar um laço contado, um contador e um acumulador para processar valores.",
   "Percorrer um vetor, calcular seus valores e realizar uma pesquisa linear.",
   "Acessar e percorrer uma matriz usando linha e coluna.",
@@ -1153,6 +1153,172 @@ if ("IntersectionObserver" in window) {
   }, { rootMargin: "-20% 0px -65% 0px" });
   lessonSections.forEach((section) => sectionObserver.observe(section));
 }
+
+function setupWhileSimulator() {
+  const root = document.querySelector("#sim-while");
+  if (!root) return;
+  const capacity = 300;
+  const dose = 100;
+  const maxForgetfulLaps = 5;
+  const water = root.querySelector("#sim-water");
+  const glass = root.querySelector("#sim-glass-svg");
+  const mlLabel = root.querySelector("#sim-ml");
+  const lapsLabel = root.querySelector("#sim-laps");
+  const status = root.querySelector("#sim-status");
+  const output = root.querySelector("#sim-output");
+  const initialInput = root.querySelector("#sim-inicial");
+  const forgetBox = root.querySelector("#sim-esqueceu");
+  const nextButton = root.querySelector("#sim-next");
+  const autoButton = root.querySelector("#sim-auto");
+  const resetButton = root.querySelector("#sim-reset");
+  const initLabel = root.querySelector("#sim-init");
+  const bodyLine = root.querySelectorAll("#sim-code li[data-line='body']")[0];
+  const codeLines = [...root.querySelectorAll("#sim-code li[data-line]")];
+  const bodyLineHtml = bodyLine.innerHTML;
+  const glassTop = 20;
+  const glassBottom = 178;
+
+  let ml = 0;
+  let laps = 0;
+  let next = "check";
+  let conditionResult = false;
+  let runToken = 0;
+  let printed = [];
+
+  const highlight = (line) => {
+    for (const element of codeLines) {
+      const active = element.dataset.line === line;
+      element.classList.toggle("active", active);
+      if (active) element.setAttribute("aria-current", "step");
+      else element.removeAttribute("aria-current");
+    }
+  };
+
+  const render = () => {
+    const level = Math.min(ml, capacity) / capacity;
+    const height = Math.round((glassBottom - glassTop) * level);
+    water.setAttribute("y", String(glassBottom - height));
+    water.setAttribute("height", String(height));
+    mlLabel.textContent = `${ml} ml`;
+    lapsLabel.textContent = `Voltas: ${laps}`;
+    glass.setAttribute("aria-label", `Copo com ${ml} ml de água`);
+    output.replaceChildren();
+    if (printed.length === 0) {
+      const empty = document.createElement("span");
+      empty.className = "sim-output-empty";
+      empty.textContent = "(nada foi mostrado ainda)";
+      output.append(empty);
+    }
+    for (const line of printed) {
+      const row = document.createElement("span");
+      row.textContent = line;
+      output.append(row);
+    }
+  };
+
+  const updateBodyLine = () => {
+    if (forgetBox.checked) {
+      bodyLine.textContent = "    // ml += 100;   ← esquecemos esta linha!";
+      bodyLine.classList.add("forgot");
+    } else {
+      bodyLine.innerHTML = bodyLineHtml;
+      bodyLine.classList.remove("forgot");
+    }
+  };
+
+  const setButtons = (running) => {
+    const finished = next === "finished";
+    nextButton.disabled = finished || running;
+    autoButton.disabled = finished || running;
+    initialInput.disabled = running;
+    forgetBox.disabled = running;
+  };
+
+  const reset = () => {
+    runToken += 1;
+    const raw = initialInput.value.trim();
+    const value = raw === "" ? Number.NaN : Number(raw);
+    if (!Number.isInteger(value) || value < 0 || value > 400) {
+      initialInput.setAttribute("aria-invalid", "true");
+      status.textContent = "Escolha um número inteiro de 0 a 400 para a água inicial.";
+      status.classList.add("input-error");
+      initialInput.focus();
+      return false;
+    }
+    initialInput.removeAttribute("aria-invalid");
+    status.classList.remove("input-error");
+    ml = value;
+    laps = 0;
+    next = "check";
+    conditionResult = false;
+    printed = [];
+    initLabel.textContent = String(ml);
+    updateBodyLine();
+    highlight("init");
+    render();
+    setButtons(false);
+    status.textContent = `A variável ml foi criada com o valor ${ml}: o copo começa com ${ml} ml. Clique em “Próximo passo”.`;
+    return true;
+  };
+
+  const advance = () => {
+    if (next === "check") {
+      conditionResult = ml < capacity;
+      highlight("check");
+      if (conditionResult) {
+        status.textContent = `Pergunta: ml < ${capacity}? Como ml vale ${ml}, a resposta é SIM. O programa entra no bloco.`;
+        next = "body";
+      } else {
+        status.textContent = `Pergunta: ml < ${capacity}? Como ml vale ${ml}, a resposta é NÃO. O laço termina e o programa segue para a linha depois dele.`;
+        next = "end";
+      }
+    } else if (next === "body") {
+      laps += 1;
+      highlight("body");
+      if (!forgetBox.checked) ml += dose;
+      printed.push(`Copo com ${ml} ml`);
+      if (forgetBox.checked && laps >= maxForgetfulLaps) {
+        status.textContent = `Volta ${laps}: como o ml += 100 foi esquecido, ml continua ${ml} e a pergunta sempre dá SIM. Isso é um laço infinito. Interrompi a simulação aqui; num programa real, ele travaria.`;
+        status.classList.add("input-error");
+        next = "finished";
+      } else {
+        status.classList.remove("input-error");
+        status.textContent = forgetBox.checked
+          ? `Volta ${laps}: o bloco rodou, mas ml continua ${ml}, porque a linha que despeja água foi esquecida. O programa volta para a pergunta.`
+          : `Volta ${laps}: despejamos ${dose} ml, então ml agora vale ${ml}. O programa mostrou “Copo com ${ml} ml” e volta para a pergunta.`;
+        next = "check";
+      }
+    } else if (next === "end") {
+      highlight("end");
+      printed.push("Copo cheio!");
+      status.textContent = laps === 0
+        ? "Fim. O laço não rodou nenhuma vez, porque a pergunta já começou com NÃO. Por isso o while pode não executar o bloco."
+        : `Fim. O laço rodou ${laps} ${laps === 1 ? "vez" : "vezes"} e o programa mostrou “Copo cheio!”.`;
+      next = "finished";
+    }
+    render();
+    setButtons(false);
+  };
+
+  nextButton.addEventListener("click", advance);
+  resetButton.addEventListener("click", reset);
+  initialInput.addEventListener("change", reset);
+  forgetBox.addEventListener("change", reset);
+  autoButton.addEventListener("click", async () => {
+    const token = ++runToken;
+    setButtons(true);
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 800;
+    while (next !== "finished" && token === runToken) {
+      advance();
+      setButtons(true);
+      if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
+    }
+    if (token === runToken) setButtons(false);
+  });
+  reset();
+}
+
+setupWhileSimulator();
 
 document.querySelector("#ano-atual").textContent = String(new Date().getFullYear());
 updateProgress();

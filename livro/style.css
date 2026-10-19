@@ -505,3 +505,60 @@ button:disabled { cursor: wait; opacity: .65; }
 .mini-flow .flow-box { flex: 1 1 112px; }
 .flow-arrow { color: #6a5fc0; }
 @media (max-width: 640px) { .vector-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; } .vector-scan { overflow-wrap: anywhere; text-align: center; } }
+
+/* Capítulo 9: laço while */
+.while-intro { margin-top: 22px; align-items: center; }
+.while-steps li { align-items: flex-start; font-size: 14px; line-height: 1.6; color: #4a5066; }
+.while-steps li span { flex: 0 0 auto; font-size: 12px; }
+.while-flow { margin: 0; }
+.while-flow svg { display: block; width: 100%; height: auto; border: 1px solid #e8e5f6; border-radius: 12px; background: #faf9ff; }
+.while-flow figcaption { margin-top: 8px; color: #4f566b; font-size: 13px; font-weight: 700; line-height: 1.5; }
+
+.while-sim { margin-top: 24px; padding: 18px; border: 1px solid #ddd8f6; border-radius: 13px; background: #fbfaff; }
+.while-sim .sim-head h3 { margin: 0 0 4px; font-size: 17px; }
+.while-sim .sim-head p { margin: 0 0 14px; color: #596176; font-size: 14px; }
+.while-sim .sim-body { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.while-sim .sim-glass { display: grid; justify-items: center; align-content: center; gap: 2px; padding: 10px; border: 1px solid #e3e0f2; border-radius: 12px; background: #fff; text-align: center; }
+.while-sim .sim-glass svg { width: 150px; max-width: 100%; height: auto; }
+.while-sim #sim-water { transition: y .45s ease, height .45s ease; }
+.while-sim .sim-ml { margin: 0; color: #1f5f93; font: 800 22px Consolas, monospace; }
+.while-sim .sim-laps { margin: 0; color: #4f566b; font-size: 13px; font-weight: 700; }
+.while-sim .sim-code { margin: 0; padding: 12px 0; list-style: none; overflow-x: auto; border-radius: 12px; background: #282944; color: #d7d7ec; font: 14px/1.9 Consolas, "Courier New", monospace; }
+.while-sim .sim-code li { white-space: pre; padding: 0 16px; border-left: 4px solid transparent; transition: background .2s; }
+.while-sim .sim-code li.active { border-left-color: #f0c889; background: #4a4676; }
+.while-sim .sim-code li.forgot { color: #f4b7dc; font-style: italic; }
+.while-sim .sim-status { min-height: 3.4em; margin: 14px 0 12px; padding: 11px 14px; border-left: 4px solid #8173da; border-radius: 0 8px 8px 0; background: #fff; color: #3e4458; font-size: 14px; line-height: 1.6; }
+.while-sim .sim-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.while-sim .sim-controls label { color: #4f566b; font-size: 13px; font-weight: 700; }
+.while-sim .sim-controls input[type="number"] { display: block; width: 100px; height: 40px; margin-top: 4px; padding: 0 10px; border: 1px solid #cfcbe6; border-radius: 8px; background: #fff; color: var(--ink); font-size: 14px; }
+.while-sim .sim-check { display: flex; align-items: center; gap: 8px; min-height: 40px; cursor: pointer; }
+.while-sim .sim-check input { width: 18px; height: 18px; accent-color: var(--purple); }
+.while-sim .sim-check code { color: #4b3fb0; font: 700 13px Consolas, monospace; }
+.while-sim .button-small { min-height: 40px; }
+.while-sim .sim-secondary { border: 1px solid #cfcbe6; background: #fff; color: #4a3da6; }
+.while-sim .sim-output { margin-top: 14px; padding: 12px 16px; border-radius: 10px; background: #1f2037; }
+.while-sim .sim-output-title { display: block; margin-bottom: 6px; color: #b9bbd6; font: 800 11px Manrope, sans-serif; letter-spacing: 1.2px; }
+.while-sim .sim-output-lines { display: grid; font: 14px/1.7 Consolas, monospace; color: #a8e3c7; }
+.while-sim .sim-output-empty { color: #b0b2cc; font-style: italic; }
+.while-sim .sim-hint { margin: 12px 0 0; color: #596176; font-size: 13px; }
+
+.while-compare-title { margin: 28px 0 10px; }
+.while-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.while-compare article { padding: 16px; border: 1px solid #e8e5f6; border-radius: 12px; background: #faf9ff; }
+.while-compare .compare-icon { font-size: 30px; line-height: 1; }
+.while-compare h4 { margin: 8px 0 6px; font-size: 16px; }
+.lesson-card .while-compare p { margin: 0 0 8px; color: #4f566b; font-size: 14px; line-height: 1.65; }
+.lesson-card .while-compare .compare-code { margin: 0; }
+.while-compare code { padding: 3px 7px; border-radius: 6px; background: #f0edff; color: #4b3fb0; font: 700 13px Consolas, monospace; }
+
+@media (max-width: 640px) {
+  .while-sim { padding: 12px; }
+  .while-sim .sim-body { grid-template-columns: minmax(0, 1fr); }
+  .while-sim .sim-code { font-size: 13px; }
+  .while-compare { grid-template-columns: minmax(0, 1fr); }
+  .while-sim .sim-controls .button { flex: 1 1 140px; }
+}
+@media (prefers-reduced-motion: reduce) { .while-sim #sim-water, .while-sim .sim-code li { transition: none; } }
+@media print { .while-sim .sim-controls, .while-sim .sim-hint { display: none !important; } }
+.while-sim .sim-code li { min-width: max-content; }
+.loop-warning > span { color: #a85f0e; }
