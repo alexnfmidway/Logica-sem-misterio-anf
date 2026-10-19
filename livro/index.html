@@ -6,10 +6,16 @@
   <meta name="theme-color" content="#f6f7fb">
   <meta name="description" content="Livro digital interativo para aprender lógica de programação do zero, com algoritmos, diagramas, desafios e exemplos em C#.">
   <title>Lógica sem mistério | Aprenda passo a passo</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Lógica sem mistério | Aprenda passo a passo">
+  <meta property="og:description" content="Livro digital interativo para aprender lógica de programação do zero, com algoritmos, diagramas, desafios e exemplos em C#.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
+  <noscript><p class="noscript-note">Este livro usa JavaScript para exibir exemplos resolvidos, ilustrações animadas, desafios e o progresso. Ative o JavaScript para ver o conteúdo completo.</p></noscript>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="topbar">
     <a class="brand" href="#inicio" aria-label="Lógica sem mistério, início">
@@ -27,6 +33,7 @@
   <div class="reading-progress" aria-label="Progresso dos capítulos">
     <progress id="reading-progress" max="17" value="0" aria-label="Capítulos concluídos">0 de 17 capítulos</progress>
     <span id="reading-label">0 de 17 capítulos concluídos</span>
+    <button class="reset-progress" id="reset-progress" type="button" hidden>Zerar progresso</button>
   </div>
   <p class="visually-hidden" id="page-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
@@ -71,6 +78,7 @@
     <section class="learning-layout" id="trilha">
       <aside class="sidebar" aria-label="Índice dos capítulos">
         <p class="sidebar-title">ÍNDICE DO LIVRO</p>
+        <div class="sidebar-links" id="indice-capitulos">
         <p class="part-label">PARTE I · FUNDAMENTOS</p>
         <a class="side-link active" href="#fundamentos"><span class="side-number">01</span> Lógica e algoritmos</a>
         <a class="side-link" href="#resolucao"><span class="side-number">02</span> Resolver problemas</a>
@@ -95,6 +103,7 @@
         <p class="part-label">PARTE VII · APLICAÇÃO</p>
         <a class="side-link" href="#csharp"><span class="side-number">16</span> Algoritmo para C#</a>
         <a class="side-link" href="#projeto-final"><span class="side-number">17</span> Projeto final</a>
+        </div>
         <div class="sidebar-tip">
           <span aria-hidden="true">🌱</span>
           <p><strong>Uma dica:</strong> vá no seu ritmo. Marque cada assunto quando sentir que entendeu.</p>
@@ -127,7 +136,7 @@
               </div>
             </div>
             <div class="tip-box"><b>Por enquanto:</b> vamos nos concentrar em entender o problema e descrever passos claros. Variáveis e tipos de dados serão estudados com mais cuidado no capítulo 3.</div>
-            <button class="complete-button" type="button" data-complete="1"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="1"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -169,7 +178,7 @@ mostre minutos</code></pre>
               <p><b>Pseudocódigo</b> é uma forma informal e organizada de descrever a lógica sem depender da sintaxe de uma linguagem específica.</p>
             </div>
             <div class="practice-prompt"><b>Pratique:</b> descreva entrada, processamento e saída para calcular o total de uma compra com três produtos. Ainda não precisa escrever C#.</div>
-            <button class="complete-button" type="button" data-complete="2"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="2"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -190,9 +199,9 @@ mostre minutos</code></pre>
               </div>
             </div>
             <div class="concept-grid">
-              <article><span class="concept-icon purple">▣</span><h4>Variável</h4><p>Um nome associado a um valor que pode ser atualizado, como a pontuação de um jogo.</p></article>
-              <article><span class="concept-icon orange">#</span><h4>Constante</h4><p>Um nome associado a um valor que o programa não deve alterar, como os minutos de uma hora.</p></article>
-              <article><span class="concept-icon green">Aa</span><h4>Tipo</h4><p>Define quais valores fazem sentido: texto, número inteiro, número decimal ou verdadeiro/falso.</p></article>
+              <article><span class="concept-icon purple">▣</span><h3>Variável</h3><p>Um nome associado a um valor que pode ser atualizado, como a pontuação de um jogo.</p></article>
+              <article><span class="concept-icon orange">#</span><h3>Constante</h3><p>Um nome associado a um valor que o programa não deve alterar, como os minutos de uma hora.</p></article>
+              <article><span class="concept-icon green">Aa</span><h3>Tipo</h3><p>Define quais valores fazem sentido: texto, número inteiro, número decimal ou verdadeiro/falso.</p></article>
             </div>
             <div class="code-example">
               <div class="code-heading"><span>Os mesmos dados em C#</span><span class="code-language">C#</span></div>
@@ -203,7 +212,7 @@ const int minutosPorHora = 60;</code></pre>
               <p>O tipo é declarado junto ao nome. A palavra <code>const</code> indica que o valor não será reatribuído.</p>
             </div>
             <div class="tip-box"><b>Atenção:</b> o sinal <code>=</code> em uma atribuição significa “guarde o valor da direita na variável da esquerda”. Não é uma pergunta de igualdade.</div>
-            <button class="complete-button" type="button" data-complete="3"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="3"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -233,8 +242,9 @@ int quantidade = Convert.ToInt32(Console.ReadLine());
 decimal total = preco * quantidade;
 Console.WriteLine($"Total: R$ {total:F2}");</code></pre></div>
             </div>
+            <div class="tip-box"><b>Cuidado:</b> <code>Convert.ToDecimal</code> gera erro se a pessoa digitar algo que não seja número. No capítulo 8 você verá como validar a entrada com <code>TryParse</code> antes de calcular.</div>
             <div class="practice-prompt"><b>Prática guiada:</b> troque quantidade por 5. Antes de executar, preveja a saída; depois confira seu raciocínio.</div>
-            <button class="complete-button" type="button" data-complete="4"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="4"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -273,7 +283,7 @@ decimal total = macas + leite;
 Console.WriteLine($"Total: R$ {total:F2}");</code></pre>
               <p>No código, <code>=</code> significa “guarde este valor”. Já <code>==</code> pergunta “estes valores são iguais?”.</p>
             </div>
-            <button class="complete-button" type="button" data-complete="5"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="5"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -304,7 +314,7 @@ int resultadoAgrupado = (2 + 3) * 4; // 20</code></pre>
               <p>Em C#, multiplicação e divisão precedem adição e subtração. Parênteses agrupam a parte que deve ser calculada primeiro.</p>
             </div>
             <div class="practice-prompt"><b>Desafio:</b> sem executar, calcule <code>18 / 3 + 2 * 5</code>. Depois acrescente parênteses para obter 40.</div>
-            <button class="complete-button" type="button" data-complete="6"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="6"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -343,7 +353,7 @@ else
               <output id="resultado-idade" class="interactive-result" aria-live="polite">A pessoa paga meia-entrada 🎟️</output>
             </div>
             <div class="tip-box"><b>Mais de duas opções?</b> Use <code>else if</code> (senão, se) para testar outra condição; use <code>switch</code> quando há várias alternativas de um mesmo valor, como os dias da semana.</div>
-            <button class="complete-button" type="button" data-complete="7"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="7"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -382,8 +392,25 @@ else
                 <p><code>||</code> significa OU. A validação vem primeiro para não classificar um valor fora da faixa. Com nota 8,5, a saída é “Aprovado”.</p>
               </div>
             </div>
+            <div class="code-example">
+              <div class="code-heading"><span>Validar o que a pessoa digitou com TryParse</span><span class="code-language">C#</span></div>
+              <pre><code>Console.Write("Digite a nota: ");
+if (!double.TryParse(Console.ReadLine(), out double nota))
+{
+    Console.WriteLine("Digite um número.");
+}
+else if (nota &lt; 0 || nota &gt; 10)
+{
+    Console.WriteLine("Nota inválida");
+}
+else
+{
+    Console.WriteLine(nota &gt;= 7 ? "Aprovado" : "Precisa recuperar");
+}</code></pre>
+              <p><code>TryParse</code> tenta converter o texto e devolve <code>true</code> ou <code>false</code>, sem causar erro. O valor convertido fica em <code>nota</code>. A leitura de decimais depende da configuração regional: <code>8,5</code> ou <code>8.5</code>.</p>
+            </div>
             <div class="practice-prompt"><b>Pense:</b> para permitir acesso somente quando a senha está correta <em>e</em> a conta está ativa, qual operador lógico combina as duas condições?</div>
-            <button class="complete-button" type="button" data-complete="8"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="8"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -421,7 +448,7 @@ do
 } while (tentativa &lt; 3);</code></pre>
               <p>Esse <code>do...while</code> executa três vezes. A condição só é verificada depois de cada execução.</p>
             </div>
-            <button class="complete-button" type="button" data-complete="9"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="9"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -435,7 +462,7 @@ do
             <div class="two-columns">
               <div>
                 <h3>Regar várias plantas</h3>
-                <p>Em vez de escrever “regar a planta” dez vezes, podemos repetir a instrução enquanto houver plantas sem água.</p>
+                <p>Em vez de escrever “regar a planta” cinco vezes, podemos repetir a instrução enquanto houver plantas sem água.</p>
                 <div class="plant-row" role="img" aria-label="Cinco plantas que serão regadas"><span>🪴</span><span>🌱</span><span>🌿</span><span>🪴</span><span>🌱</span></div>
                 <div class="loop-route"><span>regar uma</span><span aria-hidden="true">↶</span><span>próxima planta</span><span aria-hidden="true">↶</span><span>até acabar</span></div>
               </div>
@@ -465,7 +492,7 @@ Console.WriteLine(soma); // 15</code></pre>
               <button class="button button-small" id="iniciar-contagem" type="button">Iniciar laço</button>
               <output id="resultado-voltas" class="interactive-result" aria-live="polite">Pronto para começar.</output>
             </div>
-            <button class="complete-button" type="button" data-complete="10"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="10"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -488,7 +515,12 @@ Console.WriteLine(soma); // 15</code></pre>
               <div>
                 <h3>Índice é o endereço</h3>
                 <p>Em C#, o primeiro índice é 0. Para um vetor com quatro valores, as posições vão de 0 a 3; tentar acessar 4 ultrapassa os limites.</p>
-                <div class="array-visual"><div class="array-label">índice → valor</div><div class="array-cells"><div><small>0</small><b>8</b></div><div><small>1</small><b>7</b></div><div><small>2</small><b>9</b></div><div><small>3</small><b>6</b></div></div></div>
+                <ul class="mini-list" aria-label="Acessos válidos e inválidos ao vetor notas">
+                  <li><code>notas[0]</code> vale 8: primeira posição.</li>
+                  <li><code>notas[2]</code> vale 9: terceira posição.</li>
+                  <li><code>notas[3]</code> vale 6: última posição.</li>
+                  <li class="is-error"><code>notas[4]</code> causa erro: não existe posição 4.</li>
+                </ul>
               </div>
             </div>
             <div class="code-example">
@@ -509,7 +541,7 @@ Console.WriteLine(soma); // 30</code></pre>
               <button class="button button-small" id="calcular-media" type="button">Calcular média</button>
               <output id="resultado-media" class="interactive-result" aria-live="polite">A média é 8,00.</output>
             </div>
-            <button class="complete-button" type="button" data-complete="11"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="11"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -549,7 +581,7 @@ for (int linha = 0; linha &lt; 2; linha++)
               <div role="row"><span role="cell">6</span><span role="cell">1</span><span role="cell">2</span></div>
             </div>
             <div class="practice-prompt"><b>Confira:</b> qual valor está em <code>lugares[0, 2]</code>? Leia primeiro a linha 0 e depois a coluna 2.</div>
-            <button class="complete-button" type="button" data-complete="12"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="12"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -580,7 +612,7 @@ double media = CalcularMedia(8, 10);
 Console.WriteLine(media); // 9</code></pre>
               <p><code>CalcularMedia</code> recebe duas notas (parâmetros), faz o cálculo e devolve a média com <code>return</code>.</p>
             </div>
-            <button class="complete-button" type="button" data-complete="13"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="13"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -602,7 +634,7 @@ Console.WriteLine(media); // 9</code></pre>
 mostrarResumo(receitas, despesas, saldo)</code></pre></div>
             </div>
             <div class="tip-box"><b>Modularizar</b> é separar partes do programa em funções ou módulos com nomes e objetivos claros. Isso facilita compreender, reutilizar e testar a solução.</div>
-            <button class="complete-button" type="button" data-complete="14"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="14"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -632,7 +664,7 @@ mostrarResumo(receitas, despesas, saldo)</code></pre></div>
             </div>
             <div class="everyday-example"><span aria-hidden="true">🔎</span><div><b>Uma sequência para depurar</b><p>Reproduza o erro → confira os dados de entrada → acompanhe os valores passo a passo → compare o resultado real com o esperado → corrija e teste novamente.</p></div></div>
             <div class="tip-box"><b>Erros comuns:</b> condição que nunca termina, índice fora do vetor, divisão por zero, precedência esquecida e valores não validados. Um teste pequeno e bem escolhido ajuda a localizar cada tipo de falha.</div>
-            <button class="complete-button" type="button" data-complete="15"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="15"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -662,9 +694,31 @@ Console.WriteLine($"Média: {media:F1}");</code></pre>
                 <p>Com esses valores, a saída é <code>Média: 8,0</code> em uma configuração regional que usa vírgula decimal.</p>
               </div>
             </div>
+            <div class="code-example">
+              <div class="code-heading"><span>Versão que lê e valida as notas</span><span class="code-language">C#</span></div>
+              <pre><code>double nota1 = LerNota(1);
+double nota2 = LerNota(2);
+double nota3 = LerNota(3);
+double media = (nota1 + nota2 + nota3) / 3;
+Console.WriteLine($"Média: {media:F1}");
+
+static double LerNota(int numero)
+{
+    while (true)
+    {
+        Console.Write($"Nota {numero}: ");
+        if (double.TryParse(Console.ReadLine(), out double nota) &amp;&amp; nota &gt;= 0 &amp;&amp; nota &lt;= 10)
+        {
+            return nota;
+        }
+        Console.WriteLine("Digite um número de 0 a 10.");
+    }
+}</code></pre>
+              <p>A função repete a pergunta até receber uma nota válida. Ela junta entrada, validação, laço e função em um bloco reutilizável.</p>
+            </div>
             <div class="tip-box"><b>O que mudou?</b> As instruções informais viraram declarações, expressões e uma chamada a <code>Console.WriteLine</code>. O raciocínio permaneceu o mesmo.</div>
             <div class="practice-prompt"><b>Prática:</b> altere os valores das notas, preveja a saída e confira. Depois, pense em que validações seriam necessárias para aceitar notas digitadas por uma pessoa.</div>
-            <button class="complete-button" type="button" data-complete="16"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="16"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -729,7 +783,7 @@ static decimal Somar(decimal[] valores)
               <p>Com os valores de exemplo, as receitas somam R$ 3.650,00, as despesas R$ 2.180,00 e o saldo é R$ 1.470,00 positivo.</p>
             </div>
             <div class="practice-prompt"><b>Próxima evolução:</b> valide os valores, permita mais lançamentos, extraia a classificação do saldo para uma função e crie casos de teste para saldo positivo, negativo e zero.</div>
-            <button class="complete-button" type="button" data-complete="17"><span aria-hidden="true">✓</span> Marcar como entendido</button>
+            <button class="complete-button" type="button" data-complete="17"><span aria-hidden="true">✓</span> Marcar como concluído</button>
           </div>
         </section>
 
@@ -762,10 +816,38 @@ static decimal Somar(decimal[] valores)
             </div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </div>
+          <div class="quiz-card" data-quiz="4">
+            <p class="quiz-question"><span>04</span> Qual é o resultado de <code>10 - 2 * 3</code> em C#?</p>
+            <div class="quiz-options">
+              <button type="button" data-correct="false" data-explanation="24 seria o resultado se a subtração acontecesse primeiro. A multiplicação tem precedência.">24</button>
+              <button type="button" data-correct="true" data-explanation="Primeiro 2 * 3 = 6; depois 10 - 6 = 4. Parênteses poderiam mudar a ordem.">4</button>
+              <button type="button" data-correct="false" data-explanation="Esse valor não corresponde a nenhuma ordem de cálculo possível aqui.">16</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </div>
+          <div class="quiz-card" data-quiz="5">
+            <p class="quiz-question"><span>05</span> Um vetor tem 5 posições. Qual é o último índice válido em C#?</p>
+            <div class="quiz-options">
+              <button type="button" data-correct="false" data-explanation="O índice 5 já ultrapassa o vetor, porque a contagem começa em 0.">5</button>
+              <button type="button" data-correct="true" data-explanation="Os índices vão de 0 a 4. O último é sempre o tamanho menos 1.">4</button>
+              <button type="button" data-correct="false" data-explanation="O índice 1 é o segundo elemento, não o último.">1</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </div>
+          <div class="quiz-card" data-quiz="6">
+            <p class="quiz-question"><span>06</span> Qual palavra de C# devolve um resultado ao ponto onde a função foi chamada?</p>
+            <div class="quiz-options">
+              <button type="button" data-correct="false" data-explanation="A palavra const declara um valor que não será reatribuído; não devolve resultado de função.">const</button>
+              <button type="button" data-correct="false" data-explanation="A palavra while repete instruções; não devolve resultado.">while</button>
+              <button type="button" data-correct="true" data-explanation="A palavra return encerra a função e entrega o valor calculado a quem a chamou.">return</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </div>
+          <p class="quiz-score" id="quiz-score" role="status" aria-live="polite">Responda às perguntas para ver sua pontuação.</p>
         </section>
 
         <section class="next-step">
-          <div><span>PRÓXIMO PASSO</span><h2>O segredo é praticar um pouquinho por vez.</h2><p>Escolha uma tarefa da sua rotina e descreva a solução em passos antes de transformá-la em código C#.</p></div>
+          <div><span>PRÓXIMO PASSO</span><h2>O segredo é praticar um pouquinho por vez.</h2><p>Escolha uma tarefa da sua rotina e descreva a solução em passos antes de transformá-la em código C#. Na pasta do projeto, os arquivos <code>.cs</code> (IMC, triângulo, par ou ímpar, caixa d’água) são exercícios prontos para rodar com <code>dotnet run</code>.</p></div>
           <a class="button button-light" href="#inicio">Voltar ao início ↑</a>
         </section>
       </div>
@@ -784,6 +866,7 @@ static decimal Somar(decimal[] valores)
     </section>
   </main>
 
+  <a class="back-to-top" id="back-to-top" href="#inicio" aria-label="Voltar ao topo da página">↑ Topo</a>
   <footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>Lógica <b>sem mistério</b></span></a><p>Feito para aprender, testar e descobrir. <span>© <span id="ano-atual"></span></span></p></footer>
 </body>
 </html>

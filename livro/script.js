@@ -7,6 +7,7 @@ const progressCount = document.querySelector("#progress-count");
 const readingProgress = document.querySelector("#reading-progress");
 const readingLabel = document.querySelector("#reading-label");
 const continueReading = document.querySelector("#continue-reading");
+const resetProgressButton = document.querySelector("#reset-progress");
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector("#menu-principal");
 let progressCache = [];
@@ -52,12 +53,16 @@ const chapterIllustrations = [
 ];
 const chapterPhotos = {
   1: {
-    src: "imagens/planejar-no-caderno.png",
+    src: "imagens/planejar-no-caderno.webp",
+    width: 1000,
+    height: 667,
     alt: "Pessoa escrevendo em um caderno aberto antes de começar a programar.",
     caption: "Antes de programar, também podemos rascunhar a ideia no papel."
   },
   3: {
-    src: "imagens/memoria-em-gavetas.png",
+    src: "imagens/memoria-em-gavetas.webp",
+    width: 800,
+    height: 533,
     alt: "Gavetas de madeira identificadas guardam papéis e materiais de desenho.",
     caption: "Uma gaveta identificada ajuda a encontrar o que foi guardado — como um nome ajuda a localizar um valor."
   }
@@ -254,7 +259,12 @@ function updateProgress() {
   }
   progressCount.textContent = String(progress.length);
   readingProgress.value = progress.length;
-  readingLabel.textContent = `${progress.length} de ${completeButtons.length} capítulos concluídos`;
+  const allDone = progress.length === completeButtons.length;
+  readingLabel.textContent = allDone
+    ? "Parabéns! Você concluiu todos os capítulos."
+    : `${progress.length} de ${completeButtons.length} capítulos concluídos`;
+  readingProgress.closest(".reading-progress").classList.toggle("all-done", allDone);
+  resetProgressButton.hidden = progress.length === 0;
 }
 
 for (const button of completeButtons) {
@@ -268,6 +278,13 @@ for (const button of completeButtons) {
   });
 }
 
+resetProgressButton.addEventListener("click", () => {
+  if (!window.confirm("Zerar o progresso e marcar todos os capítulos como não concluídos?")) return;
+  saveProgress([]);
+  updateProgress();
+  announce("Progresso zerado.");
+});
+
 function setResumeLink(chapterId) {
   const section = lessonSections.find((item) => item.id === chapterId);
   if (!section || !continueReading) return;
@@ -277,6 +294,40 @@ function setResumeLink(chapterId) {
 
 const lastChapter = readStoredValue(lastChapterKey, "fundamentos");
 setResumeLink(lastChapter);
+
+function createStepPlayer(getNodes) {
+  const controls = document.createElement("div");
+  controls.className = "visual-controls";
+  const play = document.createElement("button");
+  play.type = "button";
+  play.className = "visual-play";
+  play.textContent = "▶ Animar passo a passo";
+  const status = document.createElement("span");
+  status.className = "visual-status";
+  status.setAttribute("aria-live", "polite");
+  status.setAttribute("role", "status");
+  status.textContent = "A animação destaca cada etapa.";
+  play.addEventListener("click", async () => {
+    play.disabled = true;
+    const visualNodes = [...getNodes()];
+    visualNodes.forEach((node) => node.classList.remove("visual-active", "visual-complete"));
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 520;
+    try {
+      for (const [index, node] of visualNodes.entries()) {
+        node.classList.add("visual-active");
+        status.textContent = `Etapa ${index + 1} de ${visualNodes.length}: ${node.dataset.stepLabel}.`;
+        if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
+        node.classList.remove("visual-active");
+        node.classList.add("visual-complete");
+      }
+      status.textContent = "Pronto! A sequência completa está destacada.";
+    } finally {
+      play.disabled = false;
+    }
+  });
+  controls.append(play, status);
+  return controls;
+}
 
 const illustrationRedraws = [];
 for (const section of lessonSections) {
@@ -496,32 +547,7 @@ for (const section of lessonSections) {
         scene.append(bars);
       }
 
-      const controls = createElement("div", "visual-controls");
-      const play = createElement("button", "visual-play", "▶ Animar passo a passo");
-      play.type = "button";
-      const status = createElement("span", "visual-status", "A animação destaca cada etapa.");
-      status.setAttribute("aria-live", "polite");
-      status.setAttribute("role", "status");
-      const visualNodes = [...scene.querySelectorAll(".visual-node")];
-      play.addEventListener("click", async () => {
-        play.disabled = true;
-        visualNodes.forEach((node) => node.classList.remove("visual-active", "visual-complete"));
-        const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 520;
-        try {
-          for (const [index, node] of visualNodes.entries()) {
-            node.classList.add("visual-active");
-            status.textContent = `Etapa ${index + 1} de ${visualNodes.length}: ${node.dataset.stepLabel}.`;
-            if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
-            node.classList.remove("visual-active");
-            node.classList.add("visual-complete");
-          }
-          status.textContent = "Pronto! A sequência completa está destacada.";
-        } finally {
-          play.disabled = false;
-        }
-      });
-      controls.append(play, status);
-      figure.append(caption, scene, controls);
+      figure.append(caption, scene, createStepPlayer(() => scene.querySelectorAll(".visual-node")));
       return figure;
     }
 
@@ -602,37 +628,7 @@ for (const section of lessonSections) {
     };
     drawIllustration();
     illustrationRedraws.push(drawIllustration);
-    const controls = document.createElement("div");
-    controls.className = "visual-controls";
-    const play = document.createElement("button");
-    play.type = "button";
-    play.className = "visual-play";
-    play.textContent = "▶ Animar passo a passo";
-    const status = document.createElement("span");
-    status.className = "visual-status";
-    status.setAttribute("aria-live", "polite");
-    status.setAttribute("role", "status");
-    status.textContent = "A animação destaca cada etapa.";
-    play.addEventListener("click", async () => {
-      play.disabled = true;
-      const visualNodes = [...illustration.querySelectorAll(".visual-node")];
-      visualNodes.forEach((node) => node.classList.remove("visual-active", "visual-complete"));
-      const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 520;
-      try {
-        for (const [index, node] of visualNodes.entries()) {
-          node.classList.add("visual-active");
-          status.textContent = `Etapa ${index + 1} de ${visualNodes.length}: ${node.dataset.stepLabel}.`;
-          if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
-          node.classList.remove("visual-active");
-          node.classList.add("visual-complete");
-        }
-        status.textContent = "Pronto! A sequência completa está destacada.";
-      } finally {
-        play.disabled = false;
-      }
-    });
-    controls.append(play, status);
-    figure.append(caption, illustration, controls);
+    figure.append(caption, illustration, createStepPlayer(() => illustration.querySelectorAll(".visual-node")));
     return figure;
   };
 
@@ -873,6 +869,9 @@ for (const section of lessonSections) {
     photoFigure.className = "chapter-photo";
     const image = document.createElement("img");
     image.src = photo.src;
+    image.width = photo.width;
+    image.height = photo.height;
+    image.decoding = "async";
     image.alt = photo.alt;
     image.loading = "lazy";
     const photoCaption = document.createElement("figcaption");
@@ -892,10 +891,14 @@ window.addEventListener("resize", () => {
 });
 
 const csharpKeywords = new Set([
-  "bool", "break", "const", "decimal", "double", "else", "false", "for",
-  "if", "int", "return", "static", "string", "true", "while"
+  "bool", "break", "case", "const", "continue", "decimal", "default", "do", "double", "else",
+  "false", "for", "foreach", "if", "int", "new", "null", "out", "return", "static", "string",
+  "switch", "true", "var", "void", "while"
 ]);
-const csharpTokenPattern = /(\/\/[^\n]*|"(?:\\.|[^"\\])*"|\b(?:bool|break|const|decimal|double|else|false|for|if|int|return|static|string|true|while)\b|\b\d+(?:\.\d+)?m?\b|==|!=|<=|>=|&&|\|\||\+=|-=|[{}()[\].,;:+*/%=<>!&|?-])/g;
+const csharpTokenPattern = new RegExp(
+  `(\\/\\/[^\\n]*|"(?:\\\\.|[^"\\\\])*"|\\b(?:${[...csharpKeywords].join("|")})\\b|\\b\\d+(?:\\.\\d+)?m?\\b|==|!=|<=|>=|&&|\\|\\||\\+=|-=|[{}()[\\].,;:+*/%=<>!&|?-])`,
+  "g"
+);
 
 for (const codeExample of document.querySelectorAll(".code-example")) {
   if (codeExample.querySelector(".code-language")?.textContent.trim() !== "C#") continue;
@@ -926,8 +929,10 @@ for (const codeBlock of document.querySelectorAll(".code-example pre")) {
   button.type = "button";
   button.className = "copy-code";
   button.textContent = "Copiar código";
-  button.setAttribute("aria-label", "Copiar exemplo de código");
   const header = codeBlock.closest(".code-example").querySelector(".code-heading");
+  const chapterNumber = codeBlock.closest(".lesson-section")?.dataset.lesson;
+  const where = chapterNumber ? ` (capítulo ${chapterNumber})` : "";
+  button.setAttribute("aria-label", `Copiar código: ${header.querySelector("span").textContent}${where}`);
   header.append(button);
   button.addEventListener("click", async () => {
     const text = codeBlock.innerText;
@@ -971,6 +976,37 @@ function closeMenu() {
 }
 
 mainNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+const sidebar = document.querySelector(".sidebar");
+const sidebarLinks = document.querySelector("#indice-capitulos");
+if (sidebar && sidebarLinks) {
+  const mobileQuery = window.matchMedia("(max-width: 640px)");
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "sidebar-toggle";
+  toggle.setAttribute("aria-controls", sidebarLinks.id);
+  const setCollapsed = (collapsed) => {
+    sidebar.classList.toggle("collapsed", collapsed);
+    toggle.setAttribute("aria-expanded", String(!collapsed));
+    toggle.innerHTML = `<span>Índice do livro · ${lessonSections.length} capítulos</span><span aria-hidden="true">${collapsed ? "▾" : "▴"}</span>`;
+  };
+  sidebar.classList.add("has-toggle");
+  sidebar.insertBefore(toggle, sidebarLinks);
+  setCollapsed(mobileQuery.matches);
+  toggle.addEventListener("click", () => setCollapsed(!sidebar.classList.contains("collapsed")));
+  sidebarLinks.addEventListener("click", (event) => {
+    if (mobileQuery.matches && event.target.closest("a")) setCollapsed(true);
+  });
+  mobileQuery.addEventListener("change", (event) => setCollapsed(event.matches));
+}
+
+const backToTop = document.querySelector("#back-to-top");
+const hero = document.querySelector("#inicio");
+if (backToTop && hero && "IntersectionObserver" in window) {
+  new IntersectionObserver(([entry]) => {
+    backToTop.classList.toggle("visible", !entry.isIntersecting);
+  }, { rootMargin: "-300px 0px 0px 0px" }).observe(hero);
+}
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
 });
@@ -1039,11 +1075,47 @@ document.querySelector("#calcular-media").addEventListener("click", () => {
   result.textContent = `A média é ${average.toFixed(2).replace(".", ",")}.`;
 });
 
-document.querySelectorAll(".quiz-card").forEach((card) => {
+const quizCards = [...document.querySelectorAll(".quiz-card")];
+const quizScore = document.querySelector("#quiz-score");
+const firstAttempts = new Map();
+
+function updateQuizScore() {
+  if (!quizScore) return;
+  const answered = firstAttempts.size;
+  const correct = [...firstAttempts.values()].filter(Boolean).length;
+  quizScore.textContent = answered === 0
+    ? "Responda às perguntas para ver sua pontuação."
+    : `Acertos na primeira tentativa: ${correct} de ${quizCards.length} (${answered} respondida${answered === 1 ? "" : "s"}).`;
+  if (answered > 0) {
+    const retry = document.createElement("button");
+    retry.type = "button";
+    retry.textContent = "Recomeçar revisão";
+    retry.addEventListener("click", () => {
+      firstAttempts.clear();
+      for (const card of quizCards) {
+        card.querySelectorAll(".quiz-options button").forEach((option) => {
+          option.classList.remove("correct-answer", "wrong-answer");
+          option.setAttribute("aria-pressed", "false");
+        });
+        const cardFeedback = card.querySelector(".quiz-feedback");
+        cardFeedback.textContent = "";
+        cardFeedback.className = "quiz-feedback";
+      }
+      updateQuizScore();
+    });
+    quizScore.append(retry);
+  }
+}
+
+quizCards.forEach((card) => {
   const feedback = card.querySelector(".quiz-feedback");
   card.querySelectorAll(".quiz-options button").forEach((button) => {
     button.setAttribute("aria-pressed", "false");
     button.addEventListener("click", () => {
+      if (!firstAttempts.has(card)) {
+        firstAttempts.set(card, button.dataset.correct === "true");
+        updateQuizScore();
+      }
       card.querySelectorAll(".quiz-options button").forEach((option) => {
         option.classList.remove("correct-answer", "wrong-answer");
         option.setAttribute("aria-pressed", "false");
